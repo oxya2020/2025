@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWD CSS Grid 布局</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+      :root {
+        --FiveColor01: lightskyblue;
+        --FiveColor02: #ff6;
+        --FiveColor03: #f9c;
+        --FiveColor04: lightgreen;
+        --FiveColor05: #c9f;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        color: #000;    
+        background: #fff;
+        font-family: Arial, sans-serif;
+      }
+
+      #container {
+        display: flex;
+        flex-direction: column;  
+        min-height: 99.9vh;
+      }
+
+      .main {
+        position: fixed;
+        top: 0;
+        width: 390px;
+        height: calc(100vh - 48px);
+        text-wrap: wrap;
+        border: 1px solid #000;
+        border-bottom: none;
+        overflow-y: scroll;
+        padding: 15px;
+        line-height: 1.6;
+      }
+
+      .nav {
+        position: fixed;
+        bottom: 0;
+        width: 390px;
+        height: 48px;
+        border: 1px solid #000;
+        align-content: center;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(99, 204, 7, 0.1);
+      }
+
+      .nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .nav li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style-type: none;
+        text-align: center;  
+        padding: 8px 0;
+        aspect-ratio: 5.4/1;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: var(--FiveColor04);
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+      }
+
+      .nav li:hover {
+        background: var(--FiveColor01);
+        transform: scale(1.05);
+      }
+
+      .nav li .material-symbols-outlined {
+        margin-right: 5px;
+        font-size: 18px;
+        color: #333;
+      }
+
+      /* RWD 響應式 */
+      /* 螢幕寬度 <= 389px */
+      @media screen and (max-width: 389px) {
+        #container {
+          width: 385px;
+          min-height: 100vh;
+          background: var(--FiveColor03);
+        } 
+        .main {
+          width: 385px;
+        }
+        .nav {
+          width: 385px;
+        }
+      }
+
+      /* 螢幕寬度 <= 390px 和 螢幕高度 > 660px */
+      @media screen and (min-width: 390px) and (min-height: 660px) {
+        #container {
+          width: 390px;
+          height: 660px;
+          background: var(--FiveColor02);    
+        }
+      }
+
+      /* 螢幕寬度 <= 390px 和 螢幕高度 > 675px */
+      @media screen and (min-width: 390px) and (min-height: 675px) {
+        #container {
+          width: 390px;
+          height: 675px;
+          background: var(--FiveColor01);    
+        }
+      }
+
+      /* 螢幕寬度 > 391px */
+      @media screen and (min-width: 391px) {
+        #container {
+          width: 390px;
+          height: 675px;
+          background: var(--FiveColor01);    
+        }  
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="main">
+        <p>在一片名為「彩虹谷」的奇幻森林裡，住著一隻名叫小星的兔子。小星有著雪白的毛和一雙閃亮的大眼睛，牠最愛的活動就是在森林裡尋找彩虹果——一種會發光的魔法水果，據說吃一口就能讓人開心一整天！這天，小星聽說彩虹谷深處的「星光樹」結出了一顆特別大的彩虹果，牠決定展開一場冒險。</p>
+        <p>小星背上小背包，帶著地圖出發了。森林裡的路並不好走，時而有調皮的風吹亂地圖，時而有小溪擋住去路。小星正苦惱時，遇到了好朋友阿飛——一隻愛說笑的松鼠。阿飛拍著胸脯說：「小星，別擔心！我可是森林裡的探險專家，跟我走準沒錯！」於是，兩隻小動物結伴前行，邊走邊唱著自編的探險歌，笑聲在樹林間迴盪。</p>
+        <p>半路上，牠們遇到了大麻煩——一隻名叫咕嚕的大熊擋住了路。咕嚕不高興地說：「這片森林是我的地盤，沒我的允許，誰也別想過去！」小星和阿飛嚇得縮成一團，但小星靈機一動，從背包裡掏出一顆閃亮的糖果，這是牠昨晚做的特別點心。小星笑著說：「咕嚕大哥，這糖果送你，吃了保證開心！」咕嚕半信半疑地嚐了一口，沒想到甜甜的味道讓牠咧嘴笑了起來，還主動帶路幫牠們過了危險的吊橋。</p>
+        <p>終於，牠們來到了星光樹前。那顆彩虹果果然又大又亮，散發著七彩光芒！但問題來了，彩虹果長在樹頂，實在太高了！阿飛試著爬樹，卻因為樹幹太滑摔了下來。小星想了想，說：「我們得團結力量！」於是，小星讓阿飛站在牠的肩膀上，兩隻小動物一層層疊起來，終於夠到了彩虹果。當牠們咬下第一口時，彩虹果散發出溫暖的光芒，牠們感覺整顆心都充滿了快樂。</p>
+        <p>回到彩虹谷，小星和阿飛把彩虹果的種子分給了森林裡的其他動物朋友。很快，彩虹谷長出了更多星光樹，每棵樹上都結滿了彩虹果。從此，彩虹谷變成了名副其實的「快樂森林」，每天都充滿笑聲和七彩光芒。小星和阿飛也成了森林裡的小英雄，牠們的故事被動物們傳唱，成為彩虹谷最溫暖的傳說。</p>
+      </div>
+      <div class="nav">
+        <ul>
+          <li><span class="material-symbols-outlined">link</span> URL</li>
+          <li><span class="material-symbols-outlined">home</span> Home</li>
+          <li><span class="material-symbols-outlined">calculate</span> Calc</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
