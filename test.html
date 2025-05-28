@@ -1,141 +1,124 @@
+<!-- 註解：此為 HTML、CSS、Javascript 分開儲放 -->
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RWD CSS Grid 布局</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <style>
-      :root {
-        --FiveColor01: lightskyblue;
-        --FiveColor02: #ff6;
-        --FiveColor03: #f9c;
-        --FiveColor04: lightgreen;
-        --FiveColor05: #c9f;
-      }
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />    
+<style>
+:root {
+  --FiveColor01: lightskyblue;
+  --FiveColor02: #ff6;
+  --FiveColor03: #f9c;
+  --FiveColor04: lightgreen;
+  --FiveColor05: #c9f;
+}
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+body {
+  color: #000;    
+  background:#fff;
+}
 
-      body {
-        color: #000;    
-        background: #fff;
-        font-family: Arial, sans-serif;
-      }
+#container {
+  display:flex;
+  flex-direction: column;  
+  min-height:99.9vh;
+  /*margin:3px auto 3px auto;*/
 
-      #container {
-        display: flex;
-        flex-direction: column;  
-        min-height: 99.9vh;
-      }
+}
 
-      .main {
-        position: fixed;
-        top: 0;
-        width: 390px;
-        height: calc(100vh - 48px);
-        text-wrap: wrap;
-        border: 1px solid #000;
-        border-bottom: none;
-        overflow-y: scroll;
-        padding: 15px;
-        line-height: 1.6;
-      }
+.main {
+  position: fixed;
+  top:0;
+  width:390px;
+  min-height: calc(100vh - 48px);
+  text-wrap: wrap;
+  border:1px solid #000;
+  border-bottom:none;
+  overflow-y:scroll;
+}
 
-      .nav {
-        position: fixed;
-        bottom: 0;
-        width: 390px;
-        height: 48px;
-        border: 1px solid #000;
-        align-content: center;
-        background: #fff;
-        box-shadow: 0 4px 8px rgba(99, 204, 7, 0.1);
-      }
+.nav {
+  position: fixed;
+  bottom:0;
+  width:390px;
+  height:48px;
+  border:1px solid #000;
+  align-content: center;
+  background:#fff;
+  box-shadow: 0 4px 8px rgba(99, 204, 7, 0.1);
+}
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap:wrap;
+}
 
-      .nav ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-wrap: wrap;
-      }
+.nav li {
+  display: inline-block;
+  list-style-type:none;
+  text-align: center;  
+  padding:10px 0; 
+  aspect-ratio: 5.4/1;
+  border:1px solid #000;
+}
 
-      .nav li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        list-style-type: none;
-        text-align: center;  
-        padding: 8px 0;
-        aspect-ratio: 5.4/1;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background: var(--FiveColor04);
-        color: #333;
-        font-size: 14px;
-        font-weight: bold;
-        transition: background 0.3s ease, transform 0.2s ease;
-        cursor: pointer;
-      }
 
-      .nav li:hover {
-        background: var(--FiveColor01);
-        transform: scale(1.05);
-      }
+/* RWD 響應式 */
+/* 螢幕寬度 <= 389px */
+@media screen and (max-width: 389px) {
+  #container {
+    width:385px;
+    min-height:100vh;
+    background: var(--FiveColor03);
+  } 
+  .main {
+    width:385px;
+    min-height: calc(100vh - 48px);    
+  }
+}
 
-      .nav li .material-symbols-outlined {
-        margin-right: 5px;
-        font-size: 18px;
-        color: #333;
-      }
-
-      /* RWD 響應式 */
-      /* 螢幕寬度 <= 389px */
-      @media screen and (max-width: 389px) {
-        #container {
-          width: 385px;
-          min-height: 100vh;
-          background: var(--FiveColor03);
-        } 
-        .main {
-          width: 385px;
-        }
-        .nav {
-          width: 385px;
-        }
-      }
-
-      /* 螢幕寬度 <= 390px 和 螢幕高度 > 660px */
-      @media screen and (min-width: 390px) and (min-height: 660px) {
-        #container {
-          width: 390px;
-          height: 660px;
-          background: var(--FiveColor02);    
-        }
-      }
-
-      /* 螢幕寬度 <= 390px 和 螢幕高度 > 675px */
-      @media screen and (min-width: 390px) and (min-height: 675px) {
-        #container {
-          width: 390px;
-          height: 675px;
-          background: var(--FiveColor01);    
-        }
-      }
-
-      /* 螢幕寬度 > 391px */
-      @media screen and (min-width: 391px) {
-        #container {
-          width: 390px;
-          height: 675px;
-          background: var(--FiveColor01);    
-        }  
-      }
-    </style>
+/* 螢幕寬度 <= 390px 和 螢幕高度 > 660px */
+@media screen and (min-width: 390px) and (min-height:660px) {
+  #container {
+    width:390px;
+    height:660px;
+    background: var(--FiveColor02);    
+  }
+  .main {
+    height:612px;
+  }
+/* 螢幕寬度 <= 390px 和 螢幕高度 > 675px */
+@media screen and (min-width: 390px) and (min-height:675px) {
+  #container {
+    width:390px;
+    height:675px;
+    background: var(--FiveColor01);    
+  }
+  .main {
+    height:627px;
+  }
+}
+/* 螢幕寬度 > 391px */
+@media screen and (min-width: 391px) {
+  #container {
+    width:390px;
+    height:675px;
+    background: var(--FiveColor01);    
+  }  
+  .main {
+    min-height: calc(100vh - 48px);
+  }
+}
+</style>
   </head>
   <body>
     <div id="container">
@@ -148,9 +131,9 @@
       </div>
       <div class="nav">
         <ul>
-          <li><span class="material-symbols-outlined">link</span> URL</li>
-          <li><span class="material-symbols-outlined">home</span> Home</li>
-          <li><span class="material-symbols-outlined">calculate</span> Calc</li>
+          <li>URL</li>
+          <li>Home</li>
+          <li>Calc</li>
         </ul>
       </div>
     </div>
